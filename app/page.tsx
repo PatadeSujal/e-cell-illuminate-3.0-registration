@@ -1,10 +1,12 @@
 import AuroraBackground from "@/components/AuroraBackground";
+import PageLoader from "@/components/PageLoader";
 import RegistrationForm from "@/components/RegistrationForm";
 import RevealSection from "@/components/RevealSection";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
+      <PageLoader />
       <AuroraBackground />
 
       {/* Hero */}

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PaymentQR from "./PaymentQR";
+import ECellSpinner from "./ECellSpinner";
 
 const BRANCHES = [
   "Computer Engineering",
@@ -268,9 +269,16 @@ export default function RegistrationForm() {
           whileTap={{ scale: 0.97 }}
           type="submit"
           disabled={!isValid || status === "submitting"}
-          className="w-full rounded-xl bg-gradient-to-r from-navy-600 via-navy-500 to-navy-400 px-6 py-4 font-display text-base font-semibold text-white shadow-glow transition disabled:cursor-not-allowed disabled:opacity-40"
+          className="w-full flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-navy-600 via-navy-500 to-navy-400 px-6 py-4 font-display text-base font-semibold text-white shadow-glow transition hover:shadow-glow-lg disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {status === "submitting" ? "Submitting…" : "Complete Registration"}
+          {status === "submitting" ? (
+            <>
+              <ECellSpinner className="size-5" />
+              <span>Recording Registration…</span>
+            </>
+          ) : (
+            "Complete Registration"
+          )}
         </motion.button>
       </div>
     </form>
