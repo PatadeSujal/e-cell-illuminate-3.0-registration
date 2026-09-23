@@ -1,0 +1,102 @@
+/* Loaded at runtime in the browser (not during the build), so it never
+   blocks `next build` on machines without internet access at build time.
+   Remove this line if you'd rather self-host the fonts. */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Sora", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050608;
+  color: #e9edf5;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+select option {
+  background-color: #0a1330;
+  color: #ffffff;
+}
+
+::selection {
+  background: #2b52a3;
+  color: #ffffff;
+}
+
+/* Thin custom scrollbar to match the theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050608;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1d3a7a, #4d74c9);
+  border-radius: 999px;
+}
+
+.glass-card {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(10, 19, 48, 0.5)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #ffffff 0%, #9fb6e8 45%, #4d74c9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.shimmer-border {
+  position: relative;
+}
+.shimmer-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(140, 170, 230, 0.7) 45%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: shimmer 3.2s linear infinite;
+  pointer-events: none;
+}
+
+.grid-overlay {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
