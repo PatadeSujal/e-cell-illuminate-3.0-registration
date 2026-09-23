@@ -191,7 +191,7 @@ export default function RegistrationForm() {
         <AnimatePresence mode="wait">
           {form.isMeswcoe === "yes" && (
             <ConditionalField key="prn">
-              <Field label="PRN Number" required>
+              <Field label="College PRN Number" required>
                 <input
                   type="text"
                   value={form.prn}
