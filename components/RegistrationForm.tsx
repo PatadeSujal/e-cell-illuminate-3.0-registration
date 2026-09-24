@@ -196,7 +196,7 @@ export default function RegistrationForm() {
                   type="text"
                   value={form.prn}
                   onChange={(e) => update("prn", e.target.value)}
-                  placeholder="e.g. 72xxxxxxxx"
+                  placeholder="e.g. F25xxxxxxxx"
                   className={inputClass}
                   required
                 />
