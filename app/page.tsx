@@ -180,7 +180,7 @@ export default function Home() {
         <div className="flex items-center justify-center gap-3 mb-5">
           {/* WhatsApp */}
           <a
-            href="https://chat.whatsapp.com/KYWcm5grUXjEyY38TkZLZH?mode=gi_t"
+            href="https://chat.whatsapp.com/B9khcm1zUf6DcK8C2GKFur?mode=gi_t"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
