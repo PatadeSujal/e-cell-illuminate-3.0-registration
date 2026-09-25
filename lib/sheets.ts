@@ -36,7 +36,7 @@ export async function getSheetsClient() {
 export async function appendRegistrationRow(row: (string | number)[]) {
   const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
   if (webhookUrl) {
-    const [timestamp, name, college, prn, year, branch, fee, transactionId, isMeswcoe] = row;
+    const [timestamp, name, email, college, prn, year, branch, fee, transactionId, isMeswcoe] = row;
     const res = await fetch(webhookUrl, {
       method: "POST",
       headers: {
@@ -45,13 +45,23 @@ export async function appendRegistrationRow(row: (string | number)[]) {
       body: JSON.stringify({
         timestamp,
         name,
+        fullName: name,
+        email,
+        emailAddress: email,
+        Email: email,
         college,
+        collegeName: college,
         prn,
+        prnNumber: prn,
         year,
+        studentYear: year,
         branch,
         fee,
         transactionId,
+        utr: transactionId,
         isMeswcoe,
+        row: [timestamp, name, email, college, prn, year, branch, fee, transactionId, isMeswcoe],
+        values: [timestamp, name, email, college, prn, year, branch, fee, transactionId, isMeswcoe],
       }),
       redirect: "follow",
     });
@@ -68,7 +78,7 @@ export async function appendRegistrationRow(row: (string | number)[]) {
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
-    range: "Registrations!A:I",
+    range: "Registrations!A:J",
     valueInputOption: "USER_ENTERED",
     insertDataOption: "INSERT_ROWS",
     requestBody: {

@@ -6,6 +6,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const {
       name,
+      email,
       isMeswcoe,
       collegeName,
       year,
@@ -18,6 +19,18 @@ export async function POST(req: NextRequest) {
     // Server-side validation mirrors the client-side rules.
     if (!name || typeof name !== "string" || !name.trim()) {
       return NextResponse.json({ error: "Name is required." }, { status: 400 });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (
+      !email ||
+      typeof email !== "string" ||
+      !email.trim() ||
+      !emailRegex.test(email.trim())
+    ) {
+      return NextResponse.json(
+        { error: "A valid email address is required." },
+        { status: 400 }
+      );
     }
     if (isMeswcoe !== "yes" && isMeswcoe !== "no") {
       return NextResponse.json(
@@ -57,6 +70,7 @@ export async function POST(req: NextRequest) {
     await appendRegistrationRow([
       timestamp,
       name.trim(),
+      email.trim(),
       college,
       prnValue,
       year,

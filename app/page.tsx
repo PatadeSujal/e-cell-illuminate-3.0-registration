@@ -1,7 +1,22 @@
+import dynamic from "next/dynamic";
 import AuroraBackground from "@/components/AuroraBackground";
 import PageLoader from "@/components/PageLoader";
-import RegistrationForm from "@/components/RegistrationForm";
 import RevealSection from "@/components/RevealSection";
+
+const RegistrationForm = dynamic(
+  () => import("@/components/RegistrationForm"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="glass-card mx-auto max-w-2xl rounded-3xl p-10 shadow-glow min-h-[380px] flex flex-col items-center justify-center text-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-navy-400 border-t-transparent" />
+        <p className="mt-4 text-xs font-medium tracking-wider uppercase text-mist/50">
+          Loading Form…
+        </p>
+      </div>
+    ),
+  }
+);
 
 export default function Home() {
   return (

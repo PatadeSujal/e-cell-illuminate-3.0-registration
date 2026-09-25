@@ -24,6 +24,7 @@ const OTHER_COLLEGE_FEE = 699;
 
 type FormState = {
   name: string;
+  email: string;
   isMeswcoe: "" | "yes" | "no";
   collegeName: string;
   year: string;
@@ -34,6 +35,7 @@ type FormState = {
 
 const initialState: FormState = {
   name: "",
+  email: "",
   isMeswcoe: "",
   collegeName: "",
   year: "",
@@ -56,7 +58,10 @@ export default function RegistrationForm() {
     setForm((prev) => ({ ...prev, [field]: value }));
 
   const isValid = useMemo(() => {
-    if (!form.name.trim() || !form.branch || !form.year) return false;
+    if (!form.name.trim()) return false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!form.email.trim() || !emailRegex.test(form.email.trim())) return false;
+    if (!form.branch || !form.year) return false;
     if (form.isMeswcoe === "") return false;
     if (form.isMeswcoe === "yes" && !form.prn.trim()) return false;
     if (form.isMeswcoe === "no" && !form.collegeName.trim()) return false;
@@ -149,6 +154,7 @@ export default function RegistrationForm() {
   return (
     <form
       onSubmit={handleSubmit}
+      suppressHydrationWarning
       className="glass-card mx-auto max-w-2xl rounded-3xl p-6 shadow-glow sm:p-10"
     >
       <div className="space-y-7">
@@ -159,6 +165,18 @@ export default function RegistrationForm() {
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
             placeholder="e.g. Sujal Patade"
+            className={inputClass}
+            required
+          />
+        </Field>
+
+        {/* Email Address */}
+        <Field label="Email Address" required>
+          <input
+            type="email"
+            value={form.email}
+            onChange={(e) => update("email", e.target.value)}
+            placeholder="e.g. sujal@example.com"
             className={inputClass}
             required
           />
@@ -329,7 +347,7 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div suppressHydrationWarning>
       <label className="mb-2 block text-sm font-medium text-mist/80">
         {label} {required && <span className="text-navy-400">*</span>}
       </label>

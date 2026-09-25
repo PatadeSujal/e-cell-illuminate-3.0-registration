@@ -9,13 +9,14 @@ backend.
 ## Form logic
 
 1. **Full Name** — always required.
-2. **Is the student from MESWCOE?** — Yes / No toggle.
+2. **Email Address** — always required (validated email format).
+3. **Is the student from MESWCOE?** — Yes / No toggle.
    - **No** → shows a text field to enter the student's college name.
    - **Yes** → later reveals a **PRN Number** field.
-3. **Student Year** — always required (First/Second/Third/Final Year).
-4. **PRN Number** — only shown/required when MESWCOE = Yes.
-5. **Branch** — always required.
-6. **Payment** — once the MESWCOE question is answered:
+4. **Student Year** — always required (First/Second/Third/Final Year).
+5. **PRN Number** — only shown/required when MESWCOE = Yes.
+6. **Branch** — always required.
+7. **Payment** — once the MESWCOE question is answered:
    - MESWCOE = Yes → QR code for **₹300**
    - MESWCOE = No → QR code for **₹700**
    - The QR encodes a real `upi://pay` deep link (amount + payee baked in), so
@@ -38,7 +39,7 @@ npm install
 2. Create a **Service Account** → generate a JSON key.
 3. Create a Google Sheet. Add a first row (header) to a tab named exactly
    `Registrations`:
-   `Timestamp | Name | College | PRN | Year | Branch | Fee | Transaction ID | Is MESWCOE`
+   `Timestamp | Name | Email | College | PRN | Year | Branch | Fee | Transaction ID | Is MESWCOE`
 4. Share the Sheet with the service account's email (found in the JSON key)
    with **Editor** access.
 5. Copy the Sheet ID from its URL:
