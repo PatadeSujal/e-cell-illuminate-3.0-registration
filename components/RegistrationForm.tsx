@@ -9,7 +9,9 @@ const BRANCHES = [
   "Computer Engineering",
   "Information Technology",
   "Electronics & Telecommunication",
+  "Automation & Robotics",
   "Mechanical Engineering",
+  "Artificial Intelligence and Data Science",
   "Civil Engineering",
   "Electrical Engineering",
   "Other",
@@ -93,21 +95,50 @@ export default function RegistrationForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="glass-card mx-auto max-w-lg rounded-3xl p-10 text-center shadow-glow-lg"
+        className="glass-card mx-auto max-w-lg rounded-3xl p-8 sm:p-10 text-center shadow-glow-lg"
       >
-        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-navy-600/40 text-3xl">
+        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/20 text-3xl text-emerald-400 border border-emerald-500/30 shadow-[0_0_30px_-5px_rgba(16,185,129,0.35)]">
           ✓
         </div>
         <h3 className="font-display text-2xl font-bold text-gradient">
           You&rsquo;re registered!
         </h3>
-        <p className="mt-3 text-mist/70">
+        <p className="mt-2.5 text-sm text-mist/75 leading-relaxed">
           Thanks for signing up for Illuminate 3.0. Your details and payment
-          reference have been recorded. See you at the workshop!
+          reference have been recorded.
         </p>
+
+        {/* WhatsApp Group Box */}
+        <div className="mt-6 rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-5 text-center backdrop-blur-md shadow-[0_0_35px_-8px_rgba(16,185,129,0.25)]">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Important Step
+          </span>
+
+          <h4 className="mt-3 font-display text-base font-bold text-white">
+            Join the Official WhatsApp Group
+          </h4>
+          <p className="mt-1.5 text-xs leading-relaxed text-mist/70">
+            Joining the group is required to receive event updates, schedule announcements, and workshop instructions.
+          </p>
+
+          <a
+            href="https://chat.whatsapp.com/KYWcm5grUXjEyY38TkZLZH?mode=gi_t"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_0_25px_-5px_rgba(16,185,129,0.5)] transition duration-200 hover:shadow-[0_0_35px_-2px_rgba(16,185,129,0.7)] hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.585 1.761.884 2.802.884 3.181 0 5.768-2.587 5.768-5.767 0-3.18-2.587-5.77-5.774-5.771zm3.374 8.219c-.14.394-.81.768-1.127.818-.316.05-.72.072-2.18-.535-1.748-.727-2.881-2.493-2.969-2.61-.088-.117-.704-.937-.704-1.787 0-.85.445-1.268.604-1.442.158-.174.346-.217.462-.217.116 0 .232.002.333.007.106.005.249-.04.39.298.14.339.48 1.17.522 1.256.042.086.07.186.012.302-.058.116-.088.188-.174.29-.087.101-.183.226-.261.304-.088.087-.179.182-.077.357.102.174.453.747.971 1.209.667.593 1.23.776 1.405.864.175.087.278.073.382-.045.105-.117.447-.522.566-.701.12-.178.239-.148.402-.088.163.06 1.034.488 1.211.576.178.088.297.132.34.205.044.073.044.422-.096.816zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.98-1.307A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.063c-1.636 0-3.153-.497-4.42-1.353l-.317-.213-2.98.781.796-2.905-.207-.33A8.028 8.028 0 014 12c0-4.411 3.589-8.031 8-8.031s8 3.62 8 8.031-3.589 8.063-8 8.063z" />
+            </svg>
+            <span>Join WhatsApp Group</span>
+            <span aria-hidden>→</span>
+          </a>
+        </div>
+
         <button
           onClick={() => setStatus("idle")}
-          className="mt-6 rounded-full border border-white/15 px-6 py-2 text-sm text-mist/80 transition hover:border-navy-400 hover:text-white"
+          className="mt-6 rounded-full border border-white/15 px-6 py-2 text-xs text-mist/60 transition hover:border-navy-400 hover:text-white"
         >
           Register another student
         </button>
